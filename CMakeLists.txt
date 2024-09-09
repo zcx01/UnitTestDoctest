@@ -11,19 +11,7 @@ set(TEST_DIR_SRCS   ./
 
 set(TEST_DIR_SRCS   ${TEST_DIR_SRCS}
 #[begin]
-                    ./test/chimeform
-                    ./test/popup
-                    ./test/driveinfo
-                    ./test/telltalehuawei
-                    ./test
-                    ./project/adas_net
                     ./project/popup
-                    ./project/topic
-                    ./project/fds
-                    ./project/common
-                    ./project/lin
-                    ./project/can
-                    ./project
 #[end]
 )
 #---------------include--------------

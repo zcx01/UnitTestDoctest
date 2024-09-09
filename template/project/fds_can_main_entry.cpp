@@ -17,7 +17,7 @@ class BaseFdsModule;
 /* mutex to protect simutanous access
   to can message variable between UDP receive thread and timer thread. */
 std::mutex can_data_mutex;
-static std::map<struct veh_signal *, std::set<std::shared_ptr<BaseFdsModule>>> signal_modules_map;
+extern std::map<struct veh_signal *, std::set<std::shared_ptr<BaseFdsModule>>> signal_modules_map;
 static std::set<std::string> filter_sig_name;
 
 // #define SIGDEBUG

@@ -74,7 +74,7 @@ def RemoveBlock(lineTexts,beginStr,endStr):
 def createInitProject():
     os.system("cp -rf ./template/* ./")
 
-def get_relative_subdirectories(path):
+def get_relative_subdirectories(path,isAddSelf):
     """
     递归获取指定目录下所有子目录的相对路径。
     :param path: 目录路径
@@ -93,15 +93,19 @@ def get_relative_subdirectories(path):
             relative_path = os.path.join(relative_root, dir)
             relative_paths.append("                    ./"+relative_path)
         os.path.relpath("./", start=dirpath)
-    if len(relative_paths) != 0:
+    is_relative_path = False
+    if len(relative_paths) !=0 and isAddSelf:
+        is_relative_path = True
         relative_paths.append("                    "+path)
-    return relative_paths
+    return relative_paths,is_relative_path
 
 def modifyCMakeLists():
     CMakeLineContent = readFileLines("./CMakeLists.txt")
-    CMakeLineContent,isExist = RemoveBlock(CMakeLineContent,BUILDINGBLOCKSBEGIN,BUILDINGBLOCKEND) 
-    behindStr(CMakeLineContent,BUILDINGBLOCKSBEGIN,get_relative_subdirectories("./project"),0)
-    behindStr(CMakeLineContent,BUILDINGBLOCKSBEGIN,get_relative_subdirectories("./test"),0)
+    CMakeLineContent,isExist = RemoveBlock(CMakeLineContent,BUILDINGBLOCKSBEGIN,BUILDINGBLOCKEND)
+    test_relative_paths,test_is_relative_path=get_relative_subdirectories("./test",True)
+    project_relative_paths,project_is_relative_path=get_relative_subdirectories("./project",test_is_relative_path)
+    behindStr(CMakeLineContent,BUILDINGBLOCKSBEGIN,test_relative_paths,0)
+    behindStr(CMakeLineContent,BUILDINGBLOCKSBEGIN,project_relative_paths,0)
     wirteFileDicts(CMakeLineContent,"./CMakeLists.txt",replace=False)
 
 
