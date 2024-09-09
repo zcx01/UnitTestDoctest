@@ -1,5 +1,6 @@
 #pragma once
 #include "icdoctest.h"
+#include "fds_can_main_entry.hpp"
 
 #ifdef __cplusplus
 extern "C"
