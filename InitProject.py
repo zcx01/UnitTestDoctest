@@ -109,17 +109,21 @@ def modifyCMakeLists():
     wirteFileDicts(CMakeLineContent,"./CMakeLists.txt",replace=False)
 
 
+def modifyMainConent(MainLineContent,flgs,isClear):
+    if isClear:
+        if MainLineContent.startswith(flgs):
+            MainLineContent = MainLineContent.replace(flgs,"//"+flgs)
+    else:
+        if MainLineContent.startswith("//"+flgs):
+            MainLineContent = MainLineContent.replace("//"+flgs,flgs)
+    return MainLineContent
 def modifyMain(isClear=False):
     MainLineContents = readFileLines("./main.cpp")
     newMainLineContents = []
     for MainLineContent in MainLineContents:
         MainLineContent = MainLineContent.strip()
-        if isClear:
-            if MainLineContent.startswith("test_main()"):
-                MainLineContent = MainLineContent.replace("test_main()","//test_main()")
-        else:
-            if MainLineContent.startswith("//test_main()"):
-                MainLineContent = MainLineContent.replace("//test_main()","test_main()")
+        MainLineContent = modifyMainConent(MainLineContent,"test_main()",isClear)
+        MainLineContent = modifyMainConent(MainLineContent,'''#include "test/maintest.hpp"''',isClear)
         newMainLineContents.append(MainLineContent)
 
             

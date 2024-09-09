@@ -3,7 +3,7 @@
 #include "base_fds_module.hpp"
 #include <set>
 #include <map>
-#include "fds_can_main_entry.hpp"
+#include "icdoctest.h"
 
 std::map<struct veh_signal *, std::set<std::shared_ptr<BaseFdsModule>>> signal_modules_map;
 void test_main()
