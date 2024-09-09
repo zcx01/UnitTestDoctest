@@ -6,19 +6,24 @@ set(TEST_DIR_SRCS   ./
                     ./common
                     ./common/ipc
                     ./common/queue
-                    ./project
-                    ./test 
+                    ./common/can_common
 )
 
 set(TEST_DIR_SRCS   ${TEST_DIR_SRCS}
 #[begin]
-                    ./project/base
-                    ./project/topic 
-                    ./project/can
-                    ./project/lin
-                    ./project/common
+                    ./test/chimeform
+                    ./test/popup
+                    ./test/driveinfo
+                    ./test/telltalehuawei
+                    ./test
+                    ./project/adas_net
+                    ./project/popup
+                    ./project/topic
                     ./project/fds
-                    ./test/fds/chimeform
+                    ./project/common
+                    ./project/lin
+                    ./project/can
+                    ./project
 #[end]
 )
 #---------------include--------------

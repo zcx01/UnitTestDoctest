@@ -6,6 +6,8 @@
 extern "C"
 {
 #endif
+    extern void init_signal_process();
+
     extern void CAN_SetMsgChangeHandler(fpMsgChangeHandler_t func);
     extern void CAN_SetSigChangeHandler(fpSigChangeHandler_t func);
     extern void CAN_SetMsgTimeoutHandler(fpMsgTimeoutHandler_t func);
@@ -19,7 +21,6 @@ extern "C"
     extern void init_signal_process_down();
     extern void qnx_timer_handler();
     extern void CAN_PARSER_Init();
-    
 #ifdef __cplusplus
 }
 #endif

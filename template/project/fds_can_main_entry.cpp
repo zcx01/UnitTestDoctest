@@ -1,4 +1,4 @@
-#include "init_fds_can_main_entry.hpp"
+#include "fds_can_main_entry.hpp"
 #include <map>
 #include <memory>
 #include <iostream>
@@ -17,7 +17,7 @@ class BaseFdsModule;
 /* mutex to protect simutanous access
   to can message variable between UDP receive thread and timer thread. */
 std::mutex can_data_mutex;
-extern std::map<struct veh_signal *, std::set<std::shared_ptr<BaseFdsModule>>> signal_modules_map;
+static std::map<struct veh_signal *, std::set<std::shared_ptr<BaseFdsModule>>> signal_modules_map;
 static std::set<std::string> filter_sig_name;
 
 // #define SIGDEBUG
@@ -72,7 +72,6 @@ void message_timeout_callback(struct veh_message *message, int type)
     for (; *pp_signal != NULL; pp_signal++)
     {
         signal = *pp_signal;
-        // printf("--signal uid: %X\n", signal->unique_id);
         SignalMsg m{signal, true};
         bool is_call_back = true;
         auto module_set = signal_modules_map[signal];
@@ -113,8 +112,19 @@ void init_signal_process_up()
     IC_LOG_INFO("init_signal_process");
     set_can_parser_callbacks();
     set_lin_parser_callbacks();
+
+    /***
+     * 这里初始化module，并注册到signal_modules_map中，
+    */
+
 }
 
 void init_signal_process_down()
 {
+}
+
+void init_signal_process()
+{
+    init_signal_process_up();
+    init_signal_process_down();
 }

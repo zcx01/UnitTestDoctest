@@ -52,7 +52,9 @@ Makefile*
 *build-*
 *.qm
 *.prl
-*project*
+project/*
+test/*
+
 
 # Qt unit tests
 target_wrapper.*
@@ -86,4 +88,3 @@ CMakeCache*
 *.pyc
 
 .vscode/c_cpp_properties.json
-*test/
