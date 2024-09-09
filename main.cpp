@@ -1,18 +1,11 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "doctest.h"
-#include "Internal_message_center.h"
-#include "test.hpp"
+#include <thread>
+#include "fds_can_main_entry.hpp"
+#include "test/maintest.hpp"
 
-#define ICCHECK(topic,value,func,...) {func(topic,__VA_ARGS__);\
-std::string topicValue;\
-fds::getTopicValue(topic,topicValue);\
-CHECK(topicValue == value);\
-}
+TEST_CASE("main test runing") {
+    init_signal_process();
+    test_main();
 
-TEST_CASE("testing the factorial function") {
-    // CHECK(fact(0) == 1); // should fail
-    // test().test_function("test_topic","hello");
-    
-    ICCHECK("test_topic","hello",test().test_function,"hello")
-    
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
 }

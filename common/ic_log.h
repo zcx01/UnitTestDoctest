@@ -22,6 +22,12 @@ void IC_LOG_INFO(T0 t0, T... t)
 }
 
 template <typename T0, typename... T>
+void IC_LOG_WARNING(T0 t0, T... t)
+{
+    IC_LOG_INFO(t0, t...);
+}
+
+template <typename T0, typename... T>
 void IC_LOG_DEBUG(T0 t0, T... t)
 {
     std::cout << t0 << " ";
