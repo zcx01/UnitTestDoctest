@@ -13,5 +13,5 @@ bool megaipc::MegaIpcApi::publish(const string &topic, const IpcMessage &message
 {
     std::string content((char *)message.data, message.length);
     fds::callTopicChanged(topic, content);
-    return false;
+    return true;
 }
