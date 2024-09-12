@@ -17,5 +17,6 @@ update_files_and_dirs $testcode ./template
 update_files_and_dirs $testcode ./build.sh
 update_files_and_dirs $testcode ./CMakeLists.txt
 update_files_and_dirs $testcode ./InitProject.py
+update_files_and_dirs $testcode ./InitProject.sh
 update_files_and_dirs $testcode ./main.cpp
 update_files_and_dirs $testcode ./updatetestcode.sh

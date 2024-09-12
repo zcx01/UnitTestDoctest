@@ -102,7 +102,7 @@ def get_relative_subdirectories(path,isAddSelf):
 def modifyCMakeLists():
     CMakeLineContent = readFileLines("./CMakeLists.txt")
     CMakeLineContent,isExist = RemoveBlock(CMakeLineContent,BUILDINGBLOCKSBEGIN,BUILDINGBLOCKEND)
-    test_relative_paths,test_is_relative_path=get_relative_subdirectories("./test",True)
+    test_relative_paths,test_is_relative_path=get_relative_subdirectories("./test",False)
     project_relative_paths,project_is_relative_path=get_relative_subdirectories("./project",test_is_relative_path)
     behindStr(CMakeLineContent,BUILDINGBLOCKSBEGIN,test_relative_paths,0)
     behindStr(CMakeLineContent,BUILDINGBLOCKSBEGIN,project_relative_paths,0)
@@ -145,8 +145,11 @@ if __name__ == "__main__":
         createInitProject()
         modifyMain(True)
     else:
+        if not os.path.exists("./project"):
+            createInitProject()
         if srcPaths!=None and len(srcPaths) != 0:
             for srcPath in srcPaths:
+                print(srcPath)
                 os.system(f"ln -s {srcPath}/* ./project")
         if testSrcPaths!=None and len(testSrcPaths) != 0:
             for testSrcPath in testSrcPaths:
