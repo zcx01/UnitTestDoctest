@@ -20,5 +20,6 @@ update_files_and_dirs $testcode ./InitProject.py
 update_files_and_dirs $testcode ./InitProject.sh
 update_files_and_dirs $testcode ./main.cpp
 update_files_and_dirs $testcode ./updatetestcode.sh
+update_files_and_dirs $testcode ./README.md
 cp -rf ./template/* ./
 rm -rf ./template
