@@ -11,10 +11,6 @@ update_files_and_dirs() {
     cp -rf $1/$2 ./
 }
 
-gitDir=.git
-if [ ! -d $gitDir ]; then
-    rm -rf $gitDir
-fi
 
 update_files_and_dirs $testcode ./common
 update_files_and_dirs $testcode ./template
