@@ -23,6 +23,25 @@ C++
     }
 ```
 
+# 添加测试源码
+
+```
+python
+	./InitProject.py -t 源码目录
+```
+
+# 编译
+
+```
+shell
+	./build.sh all	#编译所有
+	./build.sh apps #编译变更
+```
+
+# 运行
+
+./build/maintest
+
 # 添加测试用例
 
 修改maintest.cpp文件
@@ -68,16 +87,3 @@ C++
 	IC_CHECK_STRING		#检查topic对应的字符串，接收两个参数，第一个是topic，第二个是值
 	IC_CHECK_FLOAT		#检查topic对应的float，接收两个参数，第一个是topic，第二个是值
 ```
-
-
-# 编译
-
-```
-shell
-	./build.sh all	#编译所有
-	./build.sh apps #编译变更
-```
-
-# 运行
-
-./build/maintest
