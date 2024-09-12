@@ -49,7 +49,7 @@ ui_*.h
 *.jsc
 Makefile
 Makefile*
-*build-*
+build/*
 *.qm
 *.prl
 project/*
@@ -76,7 +76,6 @@ compile_commands.json
 *creator.user*
 
 #vscode
-*build*
 *.vscode*
 
 #cmake
