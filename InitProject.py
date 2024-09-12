@@ -93,16 +93,16 @@ def get_relative_subdirectories(path,isAddSelf):
             relative_path = os.path.join(relative_root, dir)
             relative_paths.append("                    ./"+relative_path)
         os.path.relpath("./", start=dirpath)
-    is_relative_path = False
-    if len(relative_paths) !=0 and isAddSelf:
-        is_relative_path = True
+    is_relative_path = 0
+    if (len(relative_paths) !=0 and isAddSelf == 1) or (isAddSelf == 2):
+        is_relative_path = 1
         relative_paths.append("                    "+path)
     return relative_paths,is_relative_path
 
 def modifyCMakeLists():
     CMakeLineContent = readFileLines("./CMakeLists.txt")
     CMakeLineContent,isExist = RemoveBlock(CMakeLineContent,BUILDINGBLOCKSBEGIN,BUILDINGBLOCKEND)
-    test_relative_paths,test_is_relative_path=get_relative_subdirectories("./test",False)
+    test_relative_paths,test_is_relative_path=get_relative_subdirectories("./test",2)
     project_relative_paths,project_is_relative_path=get_relative_subdirectories("./project",test_is_relative_path)
     behindStr(CMakeLineContent,BUILDINGBLOCKSBEGIN,test_relative_paths,0)
     behindStr(CMakeLineContent,BUILDINGBLOCKSBEGIN,project_relative_paths,0)
