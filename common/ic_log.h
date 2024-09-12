@@ -5,7 +5,7 @@
 #include <vector>
 #include <list>
 #include <map>
-
+#include <functional>
 #define COUT(V) std::cout << __LINE__ << " ----  " << V << std::endl;
 
 static int64_t IC_TIMESTAMP()
