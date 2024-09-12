@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-python InitProject.py -p ./src/ic_service/generated ./src/ic_service/src/fds/base/
+python InitProject.py -p $1/src/ic_service/generated $1/src/ic_service/src/fds/base/
