@@ -6,14 +6,22 @@
 #include <list>
 #include <map>
 #include <functional>
+
 #define COUT(V) std::cout << __LINE__ << " ----  " << V << std::endl;
+
+extern bool isPrintLog;
+
+static void setPrintLog(bool isPrint)
+{
+    isPrintLog = isPrint;
+}
 
 static int64_t IC_TIMESTAMP()
 {
     return 1;
 }
 
-#define  IC_LOG_INFO(...) printf(__VA_ARGS__);printf("\n");
+#define  IC_LOG_INFO(...) if(isPrintLog) {printf(__VA_ARGS__);printf("\n");}
 #define  IC_LOG_WARNING(...) IC_LOG_INFO(__VA_ARGS__);
 #define  IC_LOG_DEBUG(...) IC_LOG_INFO(__VA_ARGS__);
 #define  IC_LOG_ERROR(...) IC_LOG_INFO(__VA_ARGS__);
